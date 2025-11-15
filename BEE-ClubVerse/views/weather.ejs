@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather in Ludhiana & Chandigarh | Club Verse</title>
+  <link rel="stylesheet" type="text/css" href="/styles/dashbar.css">
+</head>
+<body>
+  <nav class="nav" id="navbar">
+    <div class="nav-content">
+      <div class="logo">
+        <img src="/images/club-logo-2.png" alt="Club Verse Logo">
+      </div>
+      <div class="menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/api/bar">Bars</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="/api/weather" class="weather-btn" style="background: linear-gradient(45deg, #d4af37, #ffd700); color: #000; border-radius: 20px; padding: 8px 18px; font-weight: 600; margin-left: 10px;">Weather</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="dashboard-container" style="max-width: 900px; margin: 160px auto 40px auto; background: rgba(0,0,0,0.7); border-radius: 16px; box-shadow: 0 2px 16px #d4af37; padding: 2em; text-align: center; color: #fff; display: flex; justify-content: space-around; gap: 2em;">
+    <div style="flex:1;">
+      <h2 style="color: #d4af37; margin-bottom: 1em;">Weather in <%= ldh.city %></h2>
+      <img class="weather-icon" src="https://openweathermap.org/img/wn/<%= ldh.icon %>@2x.png" alt="Weather icon" style="width: 80px; margin-bottom: 1em;">
+      <div class="temp" style="font-size: 2em; margin: 0.5em 0; font-weight: bold; color: #ffd700;"> <%= ldh.temp %>°C</div>
+      <div class="condition" style="font-size: 1.2em; color: #fff; text-transform: capitalize;"> <%= ldh.condition %> </div>
+    </div>
+    <div style="flex:1;">
+      <h2 style="color: #d4af37; margin-bottom: 1em;">Weather in <%= chd.city %></h2>
+      <img class="weather-icon" src="https://openweathermap.org/img/wn/<%= chd.icon %>@2x.png" alt="Weather icon" style="width: 80px; margin-bottom: 1em;">
+      <div class="temp" style="font-size: 2em; margin: 0.5em 0; font-weight: bold; color: #ffd700;"> <%= chd.temp %>°C</div>
+      <div class="condition" style="font-size: 1.2em; color: #fff; text-transform: capitalize;"> <%= chd.condition %> </div>
+    </div>
+  </div>
+
+  <footer style="text-align:center; color:#d4af37; margin-top:40px; font-size:1em;">
+    &copy; <%= new Date().getFullYear() %> Club Verse. All rights reserved.
+  </footer>
+</body>
+</html>

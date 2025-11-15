@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luna - Night Club | Ludhiana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css ">
+  <link rel="stylesheet" href="/styles/paaranight.css">
+  <style>
+    :root {
+      --primary-color: #fe0083;
+      --secondary-color: #00d9ff;
+      --dark-color: #111;
+      --light-color: #fff;
+      --text-color: #f0f0f0;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color:#0a0a0a;
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background-color: transparent;
+      color: white;
+      border: 2px solid var(--primary-color);
+      padding: 8px 16px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    .back-button:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(254, 0, 131, 0.4);
+    }
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/luna2.avif');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(to top, #0a0a0a, transparent);
+    }
+    .hero-content {
+      text-align: center;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 5rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: var(--light-color);
+      text-shadow: 0 0 10px rgba(254, 0, 131, 0.8);
+      animation: glow 3s infinite alternate;
+    }
+    .hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      color: var(--light-color);
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .hero-btn {
+      padding: 12px 30px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+    }
+    .hero-btn.outline {
+      background-color: transparent;
+      border: 2px solid var(--secondary-color);
+      color: var(--secondary-color);
+    }
+    .hero-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(254, 0, 131, 0.4);
+    }
+    .hero-btn.outline:hover {
+      background-color: var(--secondary-color);
+      color: var(--dark-color);
+      box-shadow: 0 8px 20px rgba(0, 217, 255, 0.4);
+    }
+    .section {
+      padding: 100px 8%;
+      position: relative;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    }
+    .about-content {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .about-image {
+      flex: 1;
+      position: relative;
+      height: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+    .gallery {
+      background-color: #0c0c0c;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-overlay h3 {
+      color: white;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .features {
+      background: linear-gradient(135deg, #0d0d0d 0%, #161616 100%);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .feature-card {
+      background-color: rgba(20, 20, 20, 0.8);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(254, 0, 131, 0.15);
+      border-color: var(--primary-color);
+    }
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: white;
+    }
+    .feature-card p {
+      font-size: 1rem;
+      color: #bbb;
+      line-height: 1.6;
+    }
+    .events {
+      background-color: #0e0e0e;
+    }
+    .event-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      gap: 20px;
+      padding: 20px 0;
+    }
+    .event-slider::-webkit-scrollbar {
+      display: none;
+    }
+    .event-card {
+      min-width: 300px;
+      background-color: rgba(20, 20, 20, 0.9);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      flex: 0 0 auto;
+      transition: transform 0.3s ease;
+    }
+    .event-card:hover {
+      transform: translateY(-10px);
+    }
+    .event-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    .event-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .event-card:hover .event-image img {
+      transform: scale(1.1);
+    }
+    .event-content {
+      padding: 20px;
+    }
+    .event-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+    .event-content p {
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-bottom: 15px;
+    }
+    .event-date {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--secondary-color);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    .event-btn {
+      display: inline-block;
+      padding: 8px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    .event-btn:hover {
+      background-color: var(--secondary-color);
+      color: var(--dark-color);
+    }
+    .contact {
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/luna2.avif');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .contact-content {
+      display: flex;
+      gap: 50px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: white;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: white;
+    }
+    .contact-text {
+      flex: 1;
+    }
+    .contact-text h4 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: white;
+    }
+    .contact-text p,
+    .contact-text a {
+      color: #bbb;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .contact-text a:hover {
+      color: var(--secondary-color);
+    }
+    .map {
+      flex: 1;
+      height: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px rgba(254, 0, 131, 0.8); }
+      50% { text-shadow: 0 0 20px rgba(254, 0, 131, 0.8), 0 0 30px rgba(254, 0, 131, 0.4); }
+      100% { text-shadow: 0 0 10px rgba(254, 0, 131, 0.8); }
+    }
+    .book-now-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 15px 30px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      z-index: 100;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(254, 0, 131, 0.4);
+    }
+    .book-now-btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 217, 255, 0.4);
+    }
+    @media (max-width: 992px) {
+      .about-content,
+      .contact-content {
+        flex-direction: column;
+      }
+      .hero-content h1 {
+        font-size: 3.5rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .section {
+        padding: 60px 5%;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+    .nav {
+      display: flex;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8), transparent);
+      padding: 20px 40px;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      width: 180px;
+      height: 130px;
+      margin-top: -15px;
+    }
+    .menu {
+      display: flex;
+      align-items: center;
+      margin-left: 50px;
+    }
+    .menu ul {
+      display: flex;
+      gap: 80px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .menu ul li a {
+      text-decoration: none;
+      color: white;
+      background: transparent;
+      padding: 6px 20px;
+      border: solid;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .menu ul li a:hover {
+      background-color: aliceblue;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <div class="logo">
+      <img src="/images/club-logo-2.png" alt="Logo">
+    </div>
+    <div class="menu">
+      <ul>
+        <li><a href="/api/dashboard">Home</a></li>
+        <li><a href="/api/bar">Bars</a></li>
+        <li><a href="/">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Banner Section -->
+  <section class="hero">
+    <div class="banner-content">
+      <h1>Luna</h1>
+      <p>Your perfect place for craft beers and amazing vibes</p>
+      <div class="hero-buttons">
+        <a href="/api/reserve-table" class="hero-btn">Reserve Table</a>
+        <a href="#events" class="hero-btn outline">Upcoming Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2 class="section-title">About Luna</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Luna Night Club is a renowned club offering a variety of craft beers, amazing food, and an unforgettable ambiance. Whether you're here to relax with friends or enjoy a night out, Luna provides a lively and cozy atmosphere perfect for any occasion.</p>
+        <p>Our carefully curated selection of premium spirits, signature cocktails, and unique events make us the perfect destination for beer lovers and food enthusiasts alike!</p>
+      </div>
+      <div class="about-image">
+        <img src="/images/luna night club.jpg" alt="Luna interior">
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section gallery">
+    <h2 class="section-title">Experience Luna</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="/images/interior-paara.jpg" alt="Club Interior">
+        <div class="gallery-overlay"><h3>Luxurious Interiors</h3></div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/beer-paara.jpg" alt="Craft Cocktails">
+        <div class="gallery-overlay"><h3>Signature Drinks</h3></div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/paara2.jpg" alt="Live Music">
+        <div class="gallery-overlay"><h3>Live Performances</h3></div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/october.jpg" alt="VIP Experience">
+        <div class="gallery-overlay"><h3>VIP Experiences</h3></div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/slider.jpg" alt="DJ Nights">
+        <div class="gallery-overlay"><h3>DJ Nights</h3></div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/bee2.png" alt="Special Events">
+        <div class="gallery-overlay"><h3>Special Events</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section features">
+    <h2 class="section-title">Why Choose Luna</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-cocktail"></i></div>
+        <h3>Premium Drinks</h3>
+        <p>Enjoy a diverse selection of craft cocktails and premium spirits prepared by our expert mixologists.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-music"></i></div>
+        <h3>Vibrant Atmosphere</h3>
+        <p>Experience electrifying music, stunning light shows, and an energetic crowd every night.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-concierge-bell"></i></div>
+        <h3>VIP Service</h3>
+        <p>Elevate your night with our exclusive VIP packages including bottle service and priority entry.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+        <h3>Gourmet Cuisine</h3>
+        <p>Indulge in our delicious menu designed to pair perfectly with our drinks selection.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" class="section events">
+    <h2 class="section-title">Upcoming Events</h2>
+    <div class="event-slider">
+      <div class="event-card">
+        <div class="event-image"><img src="/images/paara2.jpg" alt="DJ Night Event"></div>
+        <div class="event-content">
+          <div class="event-date"><i class="far fa-calendar-alt"></i><span>May 10, 2025</span></div>
+          <h3>DJ SKYWALKER LIVE</h3>
+          <p>Experience an unforgettable night with international DJ Skywalker spinning the best electronic tracks.</p>
+          <a href="#" class="event-btn">Book Tickets</a>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image"><img src="/images/anmol.jpg" alt="Retro Night"></div>
+        <div class="event-content">
+          <div class="event-date"><i class="far fa-calendar-alt"></i><span>May 15, 2025</span></div>
+          <h3>RETRO FRIDAY</h3>
+          <p>Step back in time with classic hits from the 80s and 90s. Dress code: Vintage Vibes.</p>
+          <a href="#" class="event-btn">Book Tickets</a>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image"><img src="/images/slider.jpg" alt="Bollywood Night"></div>
+        <div class="event-content">
+          <div class="event-date"><i class="far fa-calendar-alt"></i><span>May 20, 2025</span></div>
+          <h3>BOLLYWOOD BEATS</h3>
+          <p>Dance to the hottest Bollywood tracks with special performances and themed cocktails.</p>
+          <a href="#" class="event-btn">Book Tickets</a>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image"><img src="/images/bee2.png" alt="Ladies Night"></div>
+        <div class="event-content">
+          <div class="event-date"><i class="far fa-calendar-alt"></i><span>May 25, 2025</span></div>
+          <h3>LADIES NIGHT</h3>
+          <p>Special night for ladies with complimentary drinks and exclusive deals all night long.</p>
+          <a href="#" class="event-btn">Book Tickets</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <h2 class="section-title">Visit Us</h2>
+    <div class="contact-content">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <div class="contact-detail">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-text">
+            <h4>Location</h4>
+            <p>Sukhmani Platinum Square, Barewal Awana, Ludhiana, Punjab 141003</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="contact-text">
+            <h4>Call Us</h4>
+            <p><a href="tel:+911234567890">+91 1234567890</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon"><i class="far fa-envelope"></i></div>
+          <div class="contact-text">
+            <h4>Email</h4>
+            <p><a href="mailto:info@lunaldh.com">info@lunaldh.com</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon"><i class="far fa-clock"></i></div>
+          <div class="contact-text">
+            <h4>Opening Hours</h4>
+            <p>Mon–Thu: 6 PM – 1 AM<br>Fri–Sun: 6 PM – 3 AM</p>
+          </div>
+        </div>
+      </div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb= !1m18!1m12!1m3!1d3423.387505562843!2d75.7734243755871!3d30.903790974502193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a81e1a800a57d:0xae113ca1ab825c08!2sLuna%20The%20Night%20Club!5e0!3m2!1sen!2sin!4v1747031726804!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- JavaScript -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section-title, .feature-card, .gallery-item, .event-card, .contact-detail').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

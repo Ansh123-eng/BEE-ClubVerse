@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table Booking - Club-Verse</title>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  />
+  <link rel="stylesheet" href="/styles/booktable.css">
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table Booking - Club-Verse</title>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  />
+  <style>
+    /* .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 180px;
+      height: 130px;
+      margin-left: 41%;
+      margin-top: -30px;
+      margin-bottom: -10px;
+    } */
+
+
+    .nav {
+      display: flex;
+      background-color: transparent;
+      padding: 20px 0px;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 180px;
+      height: 130px;
+      margin-top: 2px;
+      /* margin-right: 220px; */
+      margin-left: -85%;
+      margin-top: -15px;
+    }
+    #menu-nav{
+      margin-top: -27px;
+      margin-left: -90px;
+
+    }
+
+
+    .logo p {
+      font-size: 32px;
+      font-family: "Sevillana", cursive;
+      margin: 0;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+    }
+
+    .menu ul {
+      display: flex;
+      gap: 80px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu ul li a {
+      text-decoration: none;
+      color: white;
+      background: transparent;
+      padding: 6px 20px;
+      border: solid ;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .menu ul li a:hover {
+      background-color: aliceblue;
+      color: black;
+    }
+    #guests1{
+      background-color: #1e2642;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <div class="booking-header">
+        <div class="nav">
+            <div class="logo">
+              <img src="/images/club-logo-2.png" alt="Logo">
+            </div>
+            <div class="menu" id="menu-nav">
+                <ul>
+                  <li><a href="/api/dashboard">Home</a></li>
+                  <li><a href="/api/bar">Bars</a></li>
+                  <li><a href="/">Logout</a></li>
+                </ul>
+              </div>
+        </div>
+        <br><br><br><br>
+      <h1>Book Your Table</h1>
+      <p class="tagline">Experience luxury nightlife at its finest</p>
+    </div>
+
+    <div class="booking-container">
+      <!-- Club Information Section -->
+      <div class="club-info">
+        <div class="club-image-container">
+          <img src="" id="club-image" class="club-image" alt="Club Atmosphere">
+        </div>
+        
+        <h2 id="club-name">Club Name</h2>
+        
+        <div class="info-row">
+          <i class="fas fa-map-marker-alt"></i>
+          <span id="club-location">Location</span>
+        </div>
+        
+        <div class="info-row">
+          <i class="far fa-clock"></i>
+          <span id="club-hours">12:00 PM - 03:00 AM</span>
+        </div>
+        
+        <div class="info-row">
+          <i class="fas fa-star"></i>
+          <span id="club-rating">4.5 (120 reviews)</span>
+        </div>
+        
+        <div class="info-row">
+          <i class="fas fa-utensils"></i>
+          <span>Multicuisine</span>
+        </div>
+        
+        <!-- Table Availability Section -->
+        <div class="table-availability">
+          <div class="availability-title">
+            <i class="fas fa-table"></i>
+            <h3>Table Availability</h3>
+          </div>
+          
+          <div class="tables-status">
+            <div class="tables-count">
+              <div class="tables-number" id="available-tables">12</div>
+              <div class="tables-label">tables available</div>
+            </div>
+            <div class="availability-status high" id="availability-indicator">
+              <i class="fas fa-check-circle"></i>
+              <span>High Availability</span>
+            </div>
+          </div>
+          
+          <div class="availability-meter">
+            <div class="availability-progress" id="availability-bar" style="width: 80%;"></div>
+          </div>
+          
+          <div class="availability-times">
+            <div class="time-slots-title">
+              <i class="far fa-clock"></i>
+              <span>Popular Time Slots</span>
+            </div>
+            <div class="time-slots" id="time-slots-container">
+              <div class="time-slot" data-tables="4">
+                7:00 PM
+                <span class="table-count">4 tables left</span>
+              </div>
+              <div class="time-slot" data-tables="6">
+                8:00 PM
+                <span class="table-count">6 tables left</span>
+              </div>
+              <div class="time-slot low-availability" data-tables="2">
+                9:00 PM
+                <span class="table-count">2 tables left</span>
+              </div>
+              <div class="time-slot" data-tables="5">
+                10:00 PM
+                <span class="table-count">5 tables left</span>
+              </div>
+              <div class="time-slot" data-tables="8">
+                11:00 PM
+                <span class="table-count">8 tables left</span>
+              </div>
+              <div class="time-slot" data-tables="10">
+                12:00 AM
+                <span class="table-count">10 tables left</span>
+              </div>
+            </div>
+          </div>
+          
+          <button class="refresh-availability" id="refresh-availability">
+            <i class="fas fa-sync-alt"></i>
+            <span>Refresh Availability</span>
+          </button>
+        </div>
+        
+        <div class="offers-section">
+          <div class="offer-title">
+            <i class="fas fa-tags"></i>
+            <h3>Exclusive Offers</h3>
+          </div>
+          <ul class="offers-list">
+            <li class="offer-item">
+              <i class="fas fa-check-circle"></i>
+              <span><strong>25% Off</strong> on the entire bill</span>
+            </li>
+            <li class="offer-item">
+              <i class="fas fa-check-circle"></i>
+              <span><strong>Upto 25% Off</strong> with EazyDiner</span>
+            </li>
+            <li class="offer-item">
+              <i class="fas fa-check-circle"></i>
+              <span><strong>Bank offers</strong> available</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Booking Form Section -->
+      <div class="booking-form">
+        <h2>Reserve Your Experience</h2>
+        <form id="table-booking-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+          </div>
+          
+          <div class="date-time-container">
+            <div class="form-group">
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="time">Time</label>
+              <input type="time" id="time" name="time" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <select id="guests1" name="guests" required>
+              <option value="">Select number of guests</option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6">6 Guests</option>
+              <option value="7">7 Guests</option>
+              <option value="8">8 Guests</option>
+              <option value="9">9 Guests</option>
+              <option value="10+">10+ Guests</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="special-requests">Special Requests (Optional)</label>
+            <textarea id="special-requests" name="special-requests" placeholder="Any special requests or preferences..."></textarea>
+          </div>
+          
+          <div class="summary-section">
+            <h4 class="summary-title">Booking Summary</h4>
+            <div class="summary-row">
+              <span>Reservation Fee</span>
+              <span>₹1000</span>
+            </div>
+            <div class="summary-row">
+              <span>Discount (25%)</span>
+              <span>-₹250</span>
+            </div>
+            <div class="total-row">
+              <span>Total (Adjustable against bill)</span>
+              <span class="total-amount">₹750</span>
+            </div>
+          </div>
+          
+          <button type="submit" class="submit-btn">CONFIRM RESERVATION</button>
+          
+          <div class="booking-confirmation">
+            <p>* Booking amount is fully adjustable against your final bill</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to get URL parameters
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      var results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+    
+    // Table availability data - in real implementation, this would come from the server
+    const tableAvailabilityData = {
+      totalTables: 20,
+      availableTables: 12,
+      timeSlots: [
+        { time: '7:00 PM', tables: 4 },
+        { time: '8:00 PM', tables: 6 },
+        { time: '9:00 PM', tables: 2 },
+        { time: '10:00 PM', tables: 5 },
+        { time: '11:00 PM', tables: 8 },
+        { time: '12:00 AM', tables: 10 }
+      ]
+    };
+    
+    function updateAvailabilityIndicator(availableTables, totalTables) {
+  const availabilityIndicator = document.getElementById('availability-indicator');
+  const availabilityBar = document.getElementById('availability-bar');
+  const availableTablesEl = document.getElementById('available-tables');
+
+  // Update the number of available tables
+  availableTablesEl.textContent = availableTables;
+
+  // Calculate percentage of available tables
+  const percentage = (availableTables / totalTables) * 100;
+  availabilityBar.style.width = `${percentage}%`; // Fixed line
+
+  // Update the indicator status and style
+  availabilityIndicator.className = 'availability-status';
+  if (percentage > 66) {
+    availabilityIndicator.classList.add('high');
+    availabilityIndicator.innerHTML = '<i class="fas fa-check-circle"></i><span>High Availability</span>';
+  } else if (percentage > 33) {
+    availabilityIndicator.classList.add('medium');
+    availabilityIndicator.innerHTML = '<i class="fas fa-info-circle"></i><span>Medium Availability</span>';
+  } else {
+    availabilityIndicator.classList.add('low');
+    availabilityIndicator.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>Low Availability</span>';
+  }
+}
+    
+    // Function to render time slots
+    function renderTimeSlots(timeSlots) {
+      const timeSlotsContainer = document.getElementById('time-slots-container');
+      timeSlotsContainer.innerHTML = '';
+      
+      timeSlots.forEach(slot => {
+        const timeSlot = document.createElement('div');
+        timeSlot.className = 'time-slot';
+        if (slot.tables <= 2) {
+          timeSlot.classList.add('low-availability');
+        }
+        timeSlot.dataset.tables = slot.tables;
+        timeSlot.innerHTML = `
+          ${slot.time}
+          <span class="table-count">${slot.tables} table${slot.tables !== 1 ? 's' : ''} left</span>
+        `;
+        
+        // Add click event listener to select time slot
+        timeSlot.addEventListener('click', function() {
+          document.querySelectorAll('.time-slot').forEach(el => el.classList.remove('selected'));
+          this.classList.add('selected');
+          
+          // Set the selected time in the time input
+          document.getElementById('time').value = convertTo24Hour(slot.time);
+        });
+        
+        timeSlotsContainer.appendChild(timeSlot);
+      });
+    }
+    
+    // Convert 12-hour format to 24-hour format for time input
+    function convertTo24Hour(time12h) {
+  const [time, modifier] = time12h.split(' ');
+  let [hours, minutes] = time.split(':');
+  if (hours === '12') {
+    hours = '00'; // Handle midnight (12 AM) and noon (12 PM)
+  }
+  if (modifier === 'PM') {
+    hours = parseInt(hours, 10) + 12; // Convert PM times to 24-hour format
+  }
+  return `${hours}:${minutes}`; // Fixed line using template literals
+}
+    
+    // Function to simulate refreshing availability data
+    function refreshAvailabilityData() {
+      // In a real implementation, this would fetch new data from the server
+      // For this demo, we'll simulate data changes
+      
+      // Disable the refresh button temporarily
+      const refreshBtn = document.getElementById('refresh-availability');
+      refreshBtn.disabled = true;
+      refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Refreshing...</span>';
+      
+      setTimeout(() => {
+        // Simulate updated data
+        tableAvailabilityData.availableTables = Math.floor(Math.random() * 10) + 5; // Random between 5-15
+        
+        // Update time slots with random values
+        tableAvailabilityData.timeSlots.forEach(slot => {
+          slot.tables = Math.floor(Math.random() * 8) + 1; // Random between 1-8
+        });
+        
+        // Update the UI
+        updateAvailabilityIndicator(tableAvailabilityData.availableTables, tableAvailabilityData.totalTables);
+        renderTimeSlots(tableAvailabilityData.timeSlots);
+        
+        // Re-enable refresh button
+        refreshBtn.disabled = false;
+        refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i><span>Refresh Availability</span>';
+        
+        // Show a success message
+        const messageEl = document.createElement('div');
+        messageEl.style.color = '#2ecc71';
+        messageEl.style.fontSize = '13px';
+        messageEl.style.marginTop = '10px';
+        messageEl.style.textAlign = 'center';
+        messageEl.innerHTML = '<i class="fas fa-check-circle"></i> Availability updated!';
+        refreshBtn.parentNode.appendChild(messageEl);
+        
+        // Remove the message after 3 seconds
+        setTimeout(() => {
+          if (messageEl.parentNode) {
+            messageEl.parentNode.removeChild(messageEl);
+          }
+        }, 3000);
+      }, 1000);
+    }
+    
+    // Function to initialize the page with club information and availability
+    function initializePage() {
+      const clubName = getUrlParameter('club') || 'Night Club';
+      const clubImage = getUrlParameter('image') || 'https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80';
+      const clubLocation = getUrlParameter('location') || 'Ludhiana, City Center';
+      
+      if (clubName) {
+        document.getElementById('club-name').textContent = clubName;
+        document.title = `Book a Table - ${clubName}`;
+      }
+      
+      if (clubImage) {
+        document.getElementById('club-image').src = clubImage;
+      }
+      
+      if (clubLocation) {
+        document.getElementById('club-location').textContent = clubLocation;
+      }
+      
+      // Set minimum date to today
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('date').min = today;
+      
+      // Set default date to today
+      document.getElementById('date').value = today;
+      
+      // Set default time
+      document.getElementById('time').value = '20:00';
+      
+      // Initialize table availability
+      updateAvailabilityIndicator(tableAvailabilityData.availableTables, tableAvailabilityData.totalTables);
+      renderTimeSlots(tableAvailabilityData.timeSlots);
+      
+      // Add event listener for date change to update availability
+      document.getElementById('date').addEventListener('change', function() {
+        // In a real implementation, this would fetch availability for the selected date
+        // For this demo, we'll just simulate a refresh
+        refreshAvailabilityData();
+      });
+      
+      // Add event listener for refresh button
+      document.getElementById('refresh-availability').addEventListener('click', refreshAvailabilityData);
+      
+      // Add event listener for time slots click
+      document.querySelectorAll('.time-slot').forEach(slot => {
+        slot.addEventListener('click', function() {
+          document.querySelectorAll('.time-slot').forEach(el => el.classList.remove('selected'));
+          this.classList.add('selected');
+          
+          // Set the selected time in the time input
+          document.getElementById('time').value = convertTo24Hour(this.innerText.split('\n')[0].trim());
+        });
+      });
+    }
+    
+    // Form submission handler
+    document.getElementById('table-booking-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get selected time slot tables count
+      let availableTables = tableAvailabilityData.availableTables;
+      const selectedTimeSlot = document.querySelector('.time-slot.selected');
+      
+      if (selectedTimeSlot) {
+        availableTables = parseInt(selectedTimeSlot.dataset.tables);
+      }
+      
+      // Check if tables are available
+      if (availableTables <= 0) {
+        alert('Sorry, no tables are available for the selected time. Please choose another time slot.');
+        return;
+      }
+      
+      // Gather form data
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        date: form.date.value,
+        time: form.time.value,
+        guests: form.guests.value,
+        specialRequests: form['special-requests'].value,
+        club: document.getElementById('club-name').textContent,
+        clubLocation: document.getElementById('club-location').textContent
+      };
+      
+      // Send data to backend
+      try {
+        const response = await fetch('/api/reservations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        
+        if (response.ok) {
+          alert('Booking confirmed! You will receive a confirmation email shortly.');
+          
+          // Update the availability after booking
+          if (selectedTimeSlot) {
+            const tablesLeft = Math.max(0, parseInt(selectedTimeSlot.dataset.tables) - 1);
+            selectedTimeSlot.dataset.tables = tablesLeft;
+            selectedTimeSlot.querySelector('.table-count').textContent = `${tablesLeft} table${tablesLeft !== 1 ? 's' : ''} left`;
+            
+            if (tablesLeft <= 2) {
+              selectedTimeSlot.classList.add('low-availability');
+            }
+            
+            tableAvailabilityData.availableTables = Math.max(0, tableAvailabilityData.availableTables - 1);
+            updateAvailabilityIndicator(tableAvailabilityData.availableTables, tableAvailabilityData.totalTables);
+          }
+        } else {
+          alert(result.error || 'Booking failed. Please try again.');
+        }
+      } catch (err) {
+        alert('Server error. Please try again later.');
+      }
+      // Optionally redirect or reset form here
+      // window.location.href = '/dashboard';
+    });
+    
+    // Initialize the page when the DOM is loaded
+    document.addEventListener('DOMContentLoaded', initializePage);
+  </script>
+</body>
+</html>
+</html>

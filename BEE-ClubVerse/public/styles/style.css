@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+.nav {
+  display: flex;
+  background-color: transparent;
+  padding: 20px 40px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 180px;
+  height: 130px;
+  margin-top: 2px;
+  margin-top: -15px;
+}
+#menu-nav{
+  margin-top: -27px;
+  margin-left: 50px;
+
+}
+
+#menu-nav1{
+  margin-top: -22px;
+  margin-right: 35px;
+}
+
+.logo p {
+  font-size: 32px;
+  font-family: "Sevillana", cursive;
+  margin: 0;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  margin-left: 50px; 
+}
+
+.menu ul {
+  display: flex;
+  gap: 80px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: white;
+  background: transparent;
+  padding: 6px 20px;
+  border: solid ;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu ul li a:hover {
+  background-color: aliceblue;
+  color: black;
+}
+.banner-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+}
+.banner-video video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+.banner-content {
+  position: absolute;
+  top: 40vh;
+  left: 3vw;
+}
+.banner-content h2 {
+  color: white;
+  font-size: 55px;
+  text-align: left;
+  font-family: "Baskervville SC", serif;
+  font-weight: 550;
+  font-style: normal;
+}
+.banner-content h3 {
+  color: white;
+  font-size: 25px;
+  text-align: left;
+  margin-top: 20px;
+  font-family: "Baskervville SC", serif;
+  font-weight: 550;
+  font-style: normal;
+}
+
+.banner-content button {
+  margin: 30px 0;
+  padding: 15px 20px;
+  border: none;
+  font-size: 18px;
+  color: #fff;
+  background: transparent;
+  border: solid whitesmoke;
+  margin-top: 8%;
+  margin-right: 65%;
+}
+.banner-content button:hover {
+  background: #151b17;
+  color: #fff;
+}
+
+.box {
+  max-width: 100vw;
+  background-color: red;
+  margin: auto;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+ul {
+  list-style: none;
+}
+.footer {
+  background-color: #24262b;
+  padding: 60px 0;
+}
+.footer-col {
+  width: 22%;
+  padding: 0 1.5%;
+}
+.footer-col h4 {
+  font-size: 18px;
+  color: #fff;
+  text-transform: capitalize;
+  margin-bottom: 30px;
+  font-weight: 500;
+  position: relative;
+}
+.footer-col h4::before {
+  content: "";
+  position: absolute;
+  left: 0%;
+  bottom: -10px;
+  height: 2px;
+  width: 50px;
+}
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.footer-col ul a {
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 300;
+  color: #bbb;
+  display: block;
+  transition: all 0.3s ease;
+}
+.footer-col ul li a:hover {
+  color: #fff;
+  padding-left: 8px;
+}
+.footer-col .social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover {
+  color: #24262b;
+  background-color: #fff;
+}
+.blog-more a button {
+  padding: 15px 20px;
+  border: none;
+  font-size: 18px;
+  /* color: #fff; */
+  background: transparent;
+  border: solid black;
+}
+.blog-more {
+  margin-left: 10%;
+  margin-top: 3%;
+  margin-bottom: 5%;
+  margin-right: 10%;
+}
+.subscribe h1{
+  text-align: center;
+  /* margin-bottom: 10px; */
+}
+.subscribe p{
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.subscribe-form{
+  text-align: center;
+}
+.subscribe-form input{
+  width: 34vw;
+  padding: 15px 23px;
+  margin: 20px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 17px;
+}
+.subscribe-form button{
+  margin: 10px;
+  padding: 15px 23px;
+  padding-top: 18.5px;
+  color: #fff;
+  background-color:#304239;
+}

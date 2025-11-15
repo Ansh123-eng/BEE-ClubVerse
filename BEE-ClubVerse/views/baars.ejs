@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club Verse - Baars</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="/styles/dashbar.css">
+    <link rel="stylesheet" href="/styles/bar.css">
+    <style>
+      .nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 5px 20px;
+        background: rgba(0, 0, 0, 0);
+        backdrop-filter: none;
+        border-bottom: none;
+        transition: all 0.3s ease;
+      }
+      .nav.scrolled {
+  background: rgba(30, 30, 30, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 16px #232a3b40;
+  border-bottom: none;
+      }
+      
+      .banner-section {
+        position: relative;
+      }
+      .banner-image {
+        position: relative;
+      }
+      .banner-image img {
+        width: 100%;
+        height: 45vh;
+        object-fit: cover;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px #d4af37a0;
+        display: block;
+      }
+      .banner-shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 45vh;
+        border-radius: 18px;
+        pointer-events: none;
+        background: linear-gradient(to bottom, rgba(30,30,30,0.7) 0%, rgba(30,30,30,0.15) 40%, rgba(30,30,30,0) 100%);
+        z-index: 2;
+      }
+      .banner-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        width: 100%;
+      }
+      .banner-content h1 {
+        color: honeydew;
+        font-size: 70px;
+        font-weight: 700;
+        text-shadow: 2px 2px 8px #232a3b, 0 0 12px #d4af37;
+        margin-bottom: 12px;
+      }
+      .banner-content h2 {
+        color: #ffe100;
+        font-size: 40px;
+        font-weight: 600;
+        text-shadow: 1.5px 1.5px #232a3b;
+      }
+      .section-title {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #ffd700;
+        text-align: center;
+        margin: 48px 0 16px 0;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 12px #232a3b, 0 0 8px #d4af37;
+        transition: color 0.4s, text-shadow 0.4s, transform 0.4s;
+        cursor: pointer;
+      }
+      .section-title:hover {
+        color: #d4af37;
+        text-shadow: 0 4px 24px #ffd700, 0 0 16px #232a3b;
+        transform: scale(1.08);
+      }
+      .city-section {
+        margin: 40px auto;
+        max-width: 1200px;
+      }
+      .outlets-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        margin-top: 24px;
+      }
+      .outlet-card {
+        background: #434242;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+        overflow: hidden;
+        transition: transform 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .outlet-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 8px 32px #d4af37a0;
+      }
+      .outlet-img img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-bottom: 2px solid #d4af37;
+      }
+      .outlet-info {
+        padding: 18px 16px 12px 16px;
+        color: #fff;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .outlet-info h3 {
+        font-size: 1.3rem;
+        color: #ffe100;
+        margin-bottom: 8px;
+      }
+      .outlet-actions {
+        margin-top: 16px;
+        display: flex;
+        gap: 12px;
+      }
+      .outlet-btn {
+        background: linear-gradient(45deg,#d4af37,#ffd700);
+        color: #0c1531;
+        border-radius: 16px;
+        padding: 7px 18px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s;
+        border: none;
+        box-shadow: 0 2px 8px #d4af3730;
+      }
+      .outlet-btn:hover {
+        background: linear-gradient(45deg,#ffd700,#d4af37);
+        color: #000;
+      }
+    </style>
+</head>
+<body>
+  <nav class="nav" id="navbar">
+    <div class="nav-content">
+      <div class="logo">
+        <img src="/images/club-logo-2.png" alt="Club Verse Logo" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http:www.w3.org/2000/svg\' viewBox=\'0 0 200 100\'%3E%3Ctext x=\'100\' y=\'60\' font-family=\'serif\' font-size=\'24\' text-anchor=\'middle\' fill=\'%23d4af37\'%3EClub Verse%3C/text%3E%3C/svg%3E';">
+      </div>
+      <div class="menu">
+        <ul>
+          <li><a href="/api/dashboard">Home</a></li>
+          <li><a href="/api/bar">Baars</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="/api/weather" class="weather-btn" style="background: linear-gradient(45deg, #d4af37, #ffd700); color: #000; border-radius: 20px; padding: 8px 18px; font-weight: 600; margin-left: 10px;">Weather</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blank Content -->
+  <div class="main">
+    <div class="banner-section">
+      <div class="banner-image">
+        <img src="/images/bars-bg1.jpg" alt="Club Verse Banner">
+        <div class="banner-shadow"></div>
+      </div>
+    </div>
+
+    <!-- Chandigarh Section -->
+    <section class="city-section">
+      <h2 class="section-title">CHANDIGARH</h2>
+      <div class="outlets-grid">
+        <div class="outlet-card">
+          <div class="outlet-img">
+            <img src="/images/grand.jpg" alt="brewestate">
+          </div>
+          <div class="outlet-info">
+            <h3>BREWESTATE</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Brew Estate, Sector 26, Chandigarh</p>
+            <p><i class="far fa-envelope"></i> info@brewestate.in</p>
+            <p><i class="fas fa-phone-alt"></i> +91-7851000003</p>
+            <div class="outlet-actions">
+              <a href="/api/brewestate" class="outlet-btn">KNOW MORE</a>
+              <a href="/api/reserve-table" class="outlet-btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="outlet-card">
+          <div class="outlet-img">
+            <img src="/images/bl.webp" alt="Boulevard">
+          </div>
+          <div class="outlet-info">
+            <h3>BOULEVARD</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 456 Boulevard Street, City Center</p>
+            <p><i class="far fa-envelope"></i> info@Boulevard.in</p>
+            <p><i class="fas fa-phone-alt"></i> +91-7851000008</p>
+            <div class="outlet-actions">
+              <a href="/api/boulevard" class="outlet-btn">KNOW MORE</a>
+              <a href="/api/reserve-table" class="outlet-btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="outlet-card">
+          <div class="outlet-img">
+            <img src="/images/kgf.webp" alt="Kala Ghoda">
+          </div>
+          <div class="outlet-info">
+            <h3>KALA GHODA</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Episodes by Kala Ghoda,SEC 26,Chd</p>
+            <p><i class="far fa-envelope"></i> info@kalaghoda.com</p>
+            <p><i class="fas fa-phone-alt"></i> +91-7851000005</p>
+            <div class="outlet-actions">
+              <a href="/api/kalaghoda" class="outlet-btn">KNOW MORE</a>
+              <a href="/api/reserve-table" class="outlet-btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ludhiana Section -->
+    <section class="city-section">
+      <h2 class="section-title">LUDHIANA</h2>
+      <div class="outlets-grid">
+        <div class="outlet-card">
+          <div class="outlet-img">
+            <img src="/images/poo.png" alt="Paara">
+          </div>
+          <div class="outlet-info">
+            <h3>PAARA</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Paara Night Club, Centra Mall, Industrial Area Phase I, area, Ludhiana, 160002</p>
+            <p><i class="far fa-envelope"></i> info@paara.in</p>
+            <p><i class="fas fa-phone-alt"></i> +91-7851000003</p>
+            <div class="outlet-actions">
+              <a href="/api/paara" class="outlet-btn">KNOW MORE</a>
+              <a href="/api/reserve-table" class="outlet-btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="outlet-card">
+          <div class="outlet-img">
+            <img src="/images/baklavi3.avif" alt="Baklavi">
+          </div>
+          <div class="outlet-info">
+            <h3>BAKLAVI</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Baklavi Bar,South Canal road,Ludhiana</p>
+            <p><i class="far fa-envelope"></i> info@baklavi.in</p>
+            <p><i class="fas fa-phone-alt"></i> +91-7851000008</p>
+            <div class="outlet-actions">
+              <a href="/api/baklavi-ldh" class="outlet-btn">KNOW MORE</a>
+              <a href="/api/reserve-table" class="outlet-btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+        <div class="outlet-card">
+          <div class="outlet-img">
+            <img src="/images/luna night club.jpg" alt="Luna">
+          </div>
+          <div class="outlet-info">
+            <h3>LUNA</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Luna Night Club,South Canal road,Ludhiana</p>
+            <p><i class="far fa-envelope"></i> info@luna.in</p>
+            <p><i class="fas fa-phone-alt"></i> +91-7851000005</p>
+            <div class="outlet-actions">
+              <a href="/api/luna-ldh" class="outlet-btn">KNOW MORE</a>
+              <a href="/api/reserve-table" class="outlet-btn">BOOK NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-content">
+      <div class="footer-col logo-col">
+  <img src="/images/club-logo-2.png" alt="The Brew Estate Logo" class="footer-logo" style="max-width:100px;height:auto;display:block;margin:0 auto;">
+      </div>
+      <div class="footer-col">
+        <h4>About us</h4>
+        <ul>
+          <li><a href="/api/ourservices">our services</a></li>
+          <li><a href="#">privacy policy</a></li>
+          <li><a href="/api/team">our team</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>get help</h4>
+        <ul>
+          <li><a href="/api/FAQ">FAQ</a></li>
+          <li><a href="/api/contactus">Help Center</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact us</h4>
+        <ul>
+          <li><a href="#">+91 1234567890</a></li>
+          <li><a href="https://mail.google.com/ ">blog9463@gmail.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('.nav');
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+</html>

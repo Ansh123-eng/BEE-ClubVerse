@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paara Night Club | Ludhiana</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css ">
+  <link rel="stylesheet" href="/styles/paaranight.css">
+  <style>
+    .nav {
+      display: flex;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9),rgba(0, 0, 0, 0.8), transparent);
+      padding: 20px 40px;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      width: 180px;
+      height: 130px;
+      margin-top: -15px;
+    }
+    #menu-nav {
+      margin-top: -27px;
+      margin-left: 90px;
+    }
+    .logo p {
+      font-size: 32px;
+      font-family: "Sevillana", cursive;
+      margin: 0;
+    }
+    .menu {
+      display: flex;
+      align-items: center;
+      margin-left: 50px;
+    }
+    .menu ul {
+      display: flex;
+      gap: 80px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .menu ul li a {
+      text-decoration: none;
+      color: white;
+      background: transparent;
+      padding: 6px 20px;
+      border: solid;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .menu ul li a:hover {
+      background-color: aliceblue;
+      color: black;
+    }
+    .banner-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('/images/bar-bg3.jpeg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+    .banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .banner-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 20px;
+    }
+    .banner-content h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+      font-family: 'Baskervville SC', serif;
+      opacity: 0;
+      transform: translateY(-30px);
+      animation: fadeSlideIn 1.5s ease forwards;
+    }
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .banner-content p {
+      font-size: 22px;
+      margin-bottom: 30px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .banner-content a {
+      display: inline-block;
+      padding: 14px 28px;
+      margin: 10px;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      background: linear-gradient(135deg, #ff4e50, #f9d423);
+      color: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .banner-content a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="nav">
+    <div class="logo">
+      <img src="/images/club-logo-2.png" alt="Logo">
+    </div>
+    <div class="menu" id="menu-nav">
+      <ul>
+        <li><a href="/api/dashboard">Home</a></li>
+        <li><a href="/api/bar">Bars</a></li>
+        <li><a href="/">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Banner Section -->
+  <section class="banner-section">
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h1>PAARA NIGHT CLUB</h1>
+      <p>Ludhiana’s Premier Destination for Nightlife, Music, and Unforgettable Moments</p>
+      <a href="/api/reserve-table">Reserve Table</a>
+      <a href="#events">Upcoming Events</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2 class="section-title">About Paara</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Paara Night Club is a renowned entertainment destination offering a variety of craft cocktails, amazing food, and an unforgettable ambiance. Whether you're here to dance the night away with friends or enjoy a sophisticated night out, Paara provides a lively and electrifying atmosphere perfect for any occasion.</p>
+        <p>Our carefully curated selection of premium spirits, signature cocktails, and unique events make us the perfect destination for nightlife enthusiasts and food connoisseurs alike. Experience the pinnacle of Ludhiana's nightlife at Paara Night Club.</p>
+      </div>
+      <div class="about-image">
+        <img src="/images/interior-paara.jpg" alt="Paara interior">
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section gallery">
+    <h2 class="section-title">Experience Paara</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="/images/interior-paara.jpg" alt="Club Interior">
+        <div class="gallery-overlay">
+          <h3>Luxurious Interiors</h3>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/beer-paara.jpg" alt="Craft Cocktails">
+        <div class="gallery-overlay">
+          <h3>Signature Drinks</h3>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/paara2.jpg" alt="Live Music">
+        <div class="gallery-overlay">
+          <h3>Live Performances</h3>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/october.jpg" alt="VIP Experience">
+        <div class="gallery-overlay">
+          <h3>VIP Experiences</h3>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/slider.jpg" alt="DJ Nights">
+        <div class="gallery-overlay">
+          <h3>DJ Nights</h3>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/bee2.png" alt="Special Events">
+        <div class="gallery-overlay">
+          <h3>Special Events</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section features">
+    <h2 class="section-title">Why Choose Paara</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-cocktail"></i></div>
+        <h3>Premium Drinks</h3>
+        <p>Enjoy a diverse selection of craft cocktails and premium spirits prepared by our expert mixologists.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-music"></i></div>
+        <h3>Vibrant Atmosphere</h3>
+        <p>Experience electrifying music, stunning light shows, and an energetic crowd every night.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-concierge-bell"></i></div>
+        <h3>VIP Service</h3>
+        <p>Elevate your night with our exclusive VIP packages including bottle service and priority entry.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+        <h3>Gourmet Cuisine</h3>
+        <p>Indulge in our delicious menu designed to pair perfectly with our drinks selection.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" class="section events">
+    <h2 class="section-title">Upcoming Events</h2>
+    <div class="event-slider">
+      <div class="event-card">
+        <div class="event-image"><img src="/images/paara2.jpg" alt="DJ Night Event"></div>
+        <div class="event-content">
+          <div class="event-date"><i class="far fa-calendar-alt"></i><span>May 10, 2025</span></div>
+          <h3>DJ SKYWALKER LIVE</h3>
+          <p>Experience an unforgettable night with international DJ Skywalker spinning the best electronic tracks.</p>
+          <a href="#" class="event-btn">Book Tickets</a>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image"><img src="/images/anmol.jpg" alt="Retro Night"></div>
+        <div class="event-content">
+          <div class="event-date"><i class="far fa-calendar-alt"></i><span>May 15, 2025</span></div>
+          <h3>RETRO FRIDAY</h3>
+          <p>Step back in time with classic hits from the 80s and 90s. Dress code: Vintage Vibes.</p>
+          <a href="#" class="event-btn">Book Tickets</a>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image"><img src="/images/slider.jpg" alt="Bollywood Night"></div>
+        <div class="event-content">
+          <div class="event-date"><i class="far fa-calendar-alt"></i><span>May 20, 2025</span></div>
+          <h3>BOLLYWOOD BEATS</h3>
+          <p>Dance to the hottest Bollywood tracks with special performances and themed cocktails.</p>
+          <a href="#" class="event-btn">Book Tickets</a>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-image"><img src="/images/bee2.png" alt="Ladies Night"></div>
+        <div class="event-content">
+          <div class="event-date"><i class="far fa-calendar-alt"></i><span>May 25, 2025</span></div>
+          <h3>LADIES NIGHT</h3>
+          <p>Special night for ladies with complimentary drinks and exclusive deals all night long.</p>
+          <a href="#" class="event-btn">Book Tickets</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <h2 class="section-title">Visit Us</h2>
+    <div class="contact-content">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <div class="contact-detail">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="contact-text">
+            <h4>Location</h4>
+            <p>Paara Night Club, Centra Mall, Industrial Area Phase I, Ludhiana, 160002</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+          <div class="contact-text">
+            <h4>Call Us</h4>
+            <p><a href="tel:+911234567890">+91 1234567890</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon"><i class="far fa-envelope"></i></div>
+          <div class="contact-text">
+            <h4>Email</h4>
+            <p><a href="mailto:info@paaranightclubldh.com">info@paaranightclubldh.com</a></p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon"><i class="far fa-clock"></i></div>
+          <div class="contact-text">
+            <h4>Opening Hours</h4>
+            <p>Monday - Thursday: 6 PM - 1 AM<br>Friday - Sunday: 6 PM - 3 AM</p>
+          </div>
+        </div>
+      </div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb= !1m18!1m12!1m3!1d3424.889377168839!2d75.84915937520674!3d30.879732074517783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a824c01ab3de9%3A0x4b7e6dce2736b7a5!2sCentra%20Mall!5e0!3m2!1sen!2sin!4v1715181600000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Reveal Animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section-title, .feature-card, .gallery-item, .event-card, .contact-detail').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
